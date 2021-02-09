@@ -6,8 +6,8 @@
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 $server = $url["us-cdbr-east-03.cleardb.com"];
-$username = $url["user"];
-$password = $url["b77f4462373524"];
+$username = $url["b77f4462373524"];
+$password = $url["0303303f"];
 $db = substr($url["testphp"], 1);
 
 $mysqli = new mysqli($server, $username, $password, $db);
@@ -15,6 +15,7 @@ $mysqli = new mysqli($server, $username, $password, $db);
 $query = "SELECT * FROM `User`";
 $read = $mysqli->query($query);
 
+echo "<script>console.log('Debug Objects: " . $mysqli . "' );</script>";
 echo "<script>console.log('Debug Objects: " . $read . "' );</script>";
 
 if (isset($_POST['submit'])) {
