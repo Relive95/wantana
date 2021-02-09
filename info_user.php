@@ -11,7 +11,8 @@ $cleardb_db = substr($cleardb_url["testphp"],1);
 $active_group = 'default';
 $query_builder = TRUE;
 // Connect to DB
-$mysqli =new mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+
+$mysqli = new mysqli($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
 if ($mysqli->connect_error) {
 
