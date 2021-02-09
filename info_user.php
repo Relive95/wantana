@@ -12,7 +12,7 @@ $active_group = 'default';
 $query_builder = TRUE;
 // Connect to DB
 
-$mysqli = new mysqli($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+$mysqli =  mysqli($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
 if ($mysqli->connect_error) {
 
