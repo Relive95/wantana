@@ -2,8 +2,15 @@
 <pre><?php print_r($_POST) ?> </pre>
 
 <?php
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-$mysqli = new mysqli('us-cdbr-east-03.cleardb.com', 'b77f4462373524', '0303303f', 'testphp');
+$server = $url["us-cdbr-east-03.cleardb.com"];
+$username = $url["b77f4462373524"];
+$password = $url["0303303f"];
+$db = substr($url["testphp"], 1);
+
+$mysqli = new mysqli($server, $username, $password, $db);
+
 if ($mysqli->connect_error) {
 
   printf("can not connect databse %s\n", $mysqli->connect_error);
