@@ -1,22 +1,17 @@
 <?php include 'header.php'; ?>
 <pre><?php print_r($_POST) ?> </pre>
 
-
 <?php
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$mysqli = new mysqli('us-cdbr-east-03.cleardb.com', 'b77f4462373524', '0303303f', 'heroku_06ac2c24bca07b7');
 
-$server = $url["us-cdbr-east-03.cleardb.com"];
-$username = $url["b77f4462373524"];
-$password = $url["0303303f"];
-$db = substr($url["testphp"], 1);
+if ($mysqli->connect_error) {
 
-$mysqli = new mysqli($server, $username, $password, $db);
+  printf("can not connect databse %s\n", $mysqli->connect_error);
+  exit();
+}
 
 $query = "SELECT * FROM `User`";
 $read = $mysqli->query($query);
-
-echo "<script>console.log('Debug Objects: " . $mysqli . "' );</script>";
-echo "<script>console.log('Debug Objects: " . $read . "' );</script>";
 
 if (isset($_POST['submit'])) {
   
