@@ -15,6 +15,8 @@ $mysqli = new mysqli($server, $username, $password, $db);
 $query = "SELECT * FROM `User`";
 $read = $mysqli->query($query);
 
+echo "<script>console.log('Debug Objects: " . $read . "' );</script>";
+
 if (isset($_POST['submit'])) {
   
   $id = $_POST['id'];
