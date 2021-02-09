@@ -1,24 +1,16 @@
 <?php include 'header.php' ?>
 <pre><?php print_r($_POST) ?> </pre>
 
+
 <?php
-//Get Heroku ClearDB connection information
-$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$cleardb_server = $cleardb_url["us-cdbr-east-03.cleardb.com"];
-$cleardb_username = $cleardb_url["b77f4462373524"];
-$cleardb_password = $cleardb_url["0303303f"];
-$cleardb_db = substr($cleardb_url["testphp"],1);
-$active_group = 'default';
-$query_builder = TRUE;
-// Connect to DB
-$mysqli = new mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
- 
-if ($mysqli->connect_error) {
+$server = $url["us-cdbr-east-03.cleardb.com"];
+$username = $url["user"];
+$password = $url["b77f4462373524"];
+$db = substr($url["testphp"], 1);
 
-  printf("can not connect databse %s\n", $mysqli->connect_error);
-  exit();
-}
+$mysqli = new mysqli($server, $username, $password, $db);
 
 if (isset($_POST['submit'])) {
 
